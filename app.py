@@ -8,12 +8,11 @@ def get_coin_price():
     return decimal.Decimal(r.json()['data']['price'])
 
 def submit_price():
-    abi = json.load(open('ezc_contract.json', 'r'))
+    abi = json.load(open('oracle_contract.json', 'r'))
     w3 = Web3(Web3.HTTPProvider("https://mainnet-dev.deeper.network/rpc"))
-    contract_instance = w3.eth.contract(address='0x7E48cC5B48Cceb848410192C01A5e8Bf9A1a3D9c', abi=abi)
+    contract_instance = w3.eth.contract(address='0x460E03e1e3551903456dC737a011D7B8da54e11c', abi=abi)
 
-    p = get_coin_price()
-    new_price = int(1000000000000000000 * p)
+    new_price = int(1000000000000000000 * get_coin_price())
     transaction = contract_instance.functions.setTokenPrice(new_price).buildTransaction()
     transaction.update({ 'gas' : 140850 })
     transaction.update({ 'nonce' : w3.eth.get_transaction_count('0x27FdDEF298618B512Fa6D281DB0e32E0F38D15D3') })

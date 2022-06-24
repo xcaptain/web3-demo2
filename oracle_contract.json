@@ -1,0 +1,41 @@
+[
+    {
+        "type": "event",
+        "name": "CallbackGetTokenPrice",
+        "inputs": [
+            {
+                "type": "uint256",
+                "name": "currentTokenPrice",
+                "internalType": "uint256",
+                "indexed": false
+            }
+        ],
+        "anonymous": false
+    },
+    {
+        "type": "function",
+        "stateMutability": "view",
+        "outputs": [
+            {
+                "type": "uint256",
+                "name": "",
+                "internalType": "uint256"
+            }
+        ],
+        "name": "dotMarketPrice",
+        "inputs": []
+    },
+    {
+        "type": "function",
+        "stateMutability": "nonpayable",
+        "outputs": [],
+        "name": "setTokenPrice",
+        "inputs": [
+            {
+                "type": "uint256",
+                "name": "feedPrice",
+                "internalType": "uint256"
+            }
+        ]
+    }
+]
